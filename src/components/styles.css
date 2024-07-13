@@ -1,0 +1,47 @@
+/* styles.css */
+
+.navbarLogo {
+  height: 56px;
+  display: none;
+  /* Hide by default on xs screens */
+  margin-right: 1rem;
+}
+
+@media (min-width: 600px) {
+  .navbarLogo {
+    display: flex;
+    /* Show on medium screens and above */
+  }
+}
+
+.navbarLogoSmall {
+  height: 40px;
+  display: flex;
+  /* Always display on xs screens */
+  margin-right: 1rem;
+  max-width: 100%;
+  /* Ensure image scales properly */
+  object-fit: contain;
+  /* Ensure image maintains aspect ratio */
+}
+
+
+.nav-link {
+
+  display: block;
+  text-decoration: none;
+  color: white;
+  opacity: 0.6;
+  padding: 10px;
+  transition: all 0.3s ease;
+  background-color: #0a4627;
+  border: 2px solid #0a4627;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.nav-link:hover {
+
+  color: white;
+  opacity: 1;
+}

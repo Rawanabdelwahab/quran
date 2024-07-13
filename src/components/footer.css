@@ -1,0 +1,84 @@
+@media (min-width: 1400px) {
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+        max-width: 1320px;
+    }
+}
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    width: 100%;
+    padding-left: var(--bs-gutter-x, .75rem);
+    padding-right: var(--bs-gutter-x, .75rem);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.holder-1 {
+    border-radius: 16px;
+    padding: 4em 0 5em;
+    background-image: url(../assets/images/helal.png);
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #fff;
+}
+.mt-3 {
+    margin-top: 1rem !important;
+}
+.privacy__policy__link {
+    transition: .2s ease-in-out;
+    text-decoration: underline;
+}
+.social__media {
+    display: flex;
+    grid-gap: .4rem;
+    gap: .4rem;
+    justify-content: center;
+}
+.social__media__links {
+    margin: 0 2.5px;
+}
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-flow: row;
+    flex-wrap: wrap;
+    margin: 4em auto 0;
+    width: 80%;
+}
+.main__title, .semi__title {
+    color: #0a4426;
+    text-align: center;
+}
+.main__title {
+    font-size: var(--font-size-24, 1.5rem);
+    color: #fff;
+    margin: 0;
+}
+.numbers {
+    direction: ltr;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row;
+    flex-wrap: nowrap;
+}
+.subtitle {
+    font-size: var(--font-size-20, 1.25rem);
+    text-align: center;
+    margin-top: .7em;
+}
+.holder-2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row;
+    flex-wrap: wrap;
+    background-color: #f4f4f4;
+    color: #444;
+    grid-gap: .5rem;
+    gap: .5rem;
+}
