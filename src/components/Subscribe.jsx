@@ -35,7 +35,7 @@ export default function Subscribe() {
             </div>
             <div className="content__container">
               <div className="row g-0">
-                <div className="right col-12 col-md-6">
+                <div className="right coll-12 col-md-6">
                   <div className="content">
                     <h3 className="content__title"> إختيار الحلقات و الخطط </h3>
                     <p className="content__paragraph">

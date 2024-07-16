@@ -1,5 +1,5 @@
 .how__to__subscribe {
-    padding: 5em 0 2em;
+    padding: 2em 0 2em;
 }
 
 @media (min-width: 1400px) {
@@ -29,7 +29,7 @@
 }
 
 .holder {
-    width: 55%;
+   
     margin: 0 auto;
 }
 
@@ -44,7 +44,7 @@
     text-align: center;
 }
 .main__title-3, .semi__title {
-    color: #0a4426;
+    color: #525654;
     text-align: center;
 }
 .stepper__container {
@@ -76,10 +76,10 @@
     padding-top: 2px;
 }
 .step__title-active {
-    color: #0c8849;
+    color: #878787;
 }
 .step__number-active {
-    background-color: #0c8849;
+    background-color: #878787;
 }
 
 
@@ -128,7 +128,7 @@
 
 .content__paragraph {
     color: #2a2c41bf;
-    font-size: var(--font-size-16, 1rem);
+    font-size: 15px;
     width: 80%;
 }
 
@@ -168,13 +168,13 @@ button:not(:disabled) {
 
 .button.raised__button {
     background: #fff;
-    color: #0a4426;
+    color: #525654;
     border: 2px solid #fff;
 }
 
 .button {
     transition: .2s ease-in-out;
-    background-color: #0c8849;
+    background-color: #878787;
     color: #fff;
 }
 

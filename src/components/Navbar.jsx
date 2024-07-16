@@ -52,7 +52,7 @@ function Navbar() {
     <CacheProvider value={cacheRtl}>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <AppBar position="static" sx={{ backgroundColor: "#0a4627" }}>
+        <AppBar position="static" sx={{ backgroundColor: "#3a3d3c" }}>
           <Container maxWidth="xl">
             <Toolbar disableGutters>
               <Grid container alignItems="center">
@@ -142,13 +142,13 @@ function Navbar() {
                   >
                     <Button
                       sx={{
-                        backgroundColor: "#0a4627",
+                        backgroundColor: "#686e6b",
                         color: "white",
                         border: "2px solid white",
                         "&:hover": {
                           backgroundColor: "white",
                           border: "2px solid white",
-                          color: "#0a4627",
+                          color: "#686e6b",
                         },
                       }}
                       variant="text"
@@ -158,10 +158,10 @@ function Navbar() {
                     <Button
                       sx={{
                         backgroundColor: "white",
-                        color: "#0a4627",
-                        border: "2px solid #0a4627",
+                        color: "#686e6b",
+                        border: "2px solid #686e6b",
                         "&:hover": {
-                          backgroundColor: "#0a4627",
+                          backgroundColor: "#686e6b",
                           border: "2px solid white",
                           color: "white",
                         },
@@ -180,13 +180,13 @@ function Navbar() {
                   >
                     <Button
                       sx={{
-                        backgroundColor: "#0a4627",
+                        backgroundColor: "#686e6b",
                         color: "white",
                         border: "2px solid white",
                         "&:hover": {
                           backgroundColor: "white",
                           border: "2px solid white",
-                          color: "#0a4627",
+                          color: "#686e6b",
                         },
                         marginRight: 1,
                       }}
@@ -197,10 +197,10 @@ function Navbar() {
                     <Button
                       sx={{
                         backgroundColor: "white",
-                        color: "#0a4627",
-                        border: "2px solid #0a4627",
+                        color: "#686e6b",
+                        border: "2px solid #686e6b",
                         "&:hover": {
-                          backgroundColor: "#0a4627",
+                          backgroundColor: "#686e6b",
                           border: "2px solid white",
                           color: "white",
                         },

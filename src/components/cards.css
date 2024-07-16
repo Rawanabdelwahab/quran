@@ -1,5 +1,5 @@
 .why__quran {
-    background-color: #0a4426;
+    background-color: #464847;
     padding: 5em 0;
 }
 .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
@@ -23,12 +23,12 @@
     margin-bottom: 1.2em;
 }
 .main__title, .semi__title {
-    color: #0a4426;
+    color: #464847;
     text-align: center;
 }
 
 .main__title {
-    color: #cf8b40;
+    color: #3c2ca7;
 }
 
 
@@ -47,7 +47,7 @@ h5,
 h6 {
     margin-top: 0;
     margin-bottom: .5rem;
-    font-weight: 500;
+    font-weight: 200;
     line-height: 1.2;
 }
 
@@ -145,7 +145,7 @@ h2 {
 
     
     border-radius: 11px;
-    border: 1px solid #CF8B40;
+    border: 3px solid #3e7a79;
     background-color: transparent;
     padding: 1.5em;
     height: 100%;
@@ -167,8 +167,9 @@ h2 {
 }
 
 .card__title {
-    font-size: 18px;
-    color: #cf8b40;
+    font-size: 20px;
+    color: #dfeff5;
+    font-weight: bold;
     margin: 1em 0 .5em;
 }
 
@@ -182,7 +183,12 @@ h2 {
 .card__description {
     color: #fff;
 }
+.coll-12 {
+    margin-top: 10px !important;
+   
+   }
 
 .col-12 {
  margin-top: 10px !important;
+ padding-right: 40px;
 }

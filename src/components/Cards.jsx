@@ -11,7 +11,7 @@ export default function Cards() {
           </h2>
 
           <div className="row g-4">
-            <div className="col-12 col-lg-4 col-md-6">
+            <div className="coll-12 col-lg-4 col-md-6">
               <div className="card">
                 <svg
                   height="46"
@@ -71,7 +71,7 @@ export default function Cards() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-lg-4 col-md-6">
+            <div className="coll-12 col-lg-4 col-md-6">
               <div className="card">
                 <svg
                   height="46"
@@ -120,7 +120,7 @@ export default function Cards() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-lg-4 col-md-6">
+            <div className="coll-12 col-lg-4 col-md-6">
               <div className="card">
                 <svg
                   height="46"
@@ -227,7 +227,7 @@ export default function Cards() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-lg-4 col-md-6">
+            <div className="coll-12 col-lg-4 col-md-6">
               <div className="card">
                 <svg
                   height="46"
@@ -295,7 +295,7 @@ export default function Cards() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-lg-4 col-md-6">
+            <div className="coll-12 col-lg-4 col-md-6">
               <div className="card">
                 <svg
                   height="46"
@@ -416,7 +416,7 @@ export default function Cards() {
                 </p>
               </div>
             </div>
-            <div className="col-12 col-lg-4 col-md-6">
+            <div className="coll-12 col-lg-4 col-md-6">
               <div className="card">
                 <svg
                   height="46"

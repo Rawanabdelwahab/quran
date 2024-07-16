@@ -37,7 +37,7 @@ export default function Jumbotron() {
           </section>
         </section>
 
-        <section className="header__bottom">
+        {/* <section className="header__bottom">
           <button className="header__bottom__scrolldown">
             <svg
               height="18.212"
@@ -100,7 +100,7 @@ export default function Jumbotron() {
               </g>
             </svg>
           </button>
-        </section>
+        </section> */}
       </header>
     </div>
   );

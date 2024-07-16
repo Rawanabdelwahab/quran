@@ -35,7 +35,7 @@
 
 .main__title-2,
 .semi__title {
-    color: #0a4426;
+    color: #3b3d3c;
     text-align: center;
 }
 
@@ -107,7 +107,7 @@ a {
 }
 
 .card-2 .card__img {
-    border: 2px solid #0C8849;
+    border: 2px solid #686e6b;
     border-radius: 50%;
     padding: 2px;
     width: 100px;
@@ -141,11 +141,11 @@ svg {
 .card-2 .numbers__students,
 .card-2 .numbers__classes,
 .card-2 .country {
-    color: #0c8849;
+    color: #686e6b;
 }
 
 .card-2 .country {
-    color: #0c8849;
+    color: #686e6b;
     margin-bottom: .5rem;
     font-size: var(--font-size-16, 1rem);
 }
@@ -168,7 +168,7 @@ svg {
 }
 
 .card-2 .specialty .tags {
-    color: #0c8849;
+    color: #686e6b;
     background-color: #0c884926;
     border-radius: 6px;
     padding: 5px 10px;
@@ -201,7 +201,7 @@ svg {
 
 .button.raised__button-2 {
     background: #fff;
-    color: #0a4426;
+    color: #3e7a79;
     border: 2px solid #fff;
 }
 
@@ -213,7 +213,7 @@ svg {
 .raised__button-2 {
     margin: 0 0 0 .625rem;
     color: #fff;
-    background-color: #0c8849;
+    background-color: #3e7a79;
 }
 element.style {
     transform: translateY(0px);

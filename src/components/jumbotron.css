@@ -6,7 +6,7 @@
 
 .header__top {
     position: relative;
-    background: transparent linear-gradient(181deg, #0A4426 0%, #0C8849 100%) 0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(181deg, #525654 0%, #686e6b 100%) 0% 0% no-repeat padding-box;
     z-index: 1;
 }
 
@@ -71,6 +71,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    /* padding-top: 200px; */
 }
 * {
     box-sizing: border-box;
@@ -207,7 +208,7 @@ a {
 
 .button,
 .button:hover {
-    color: #0c8849;
+    color: #686e6b;
 }
 .button {
     position: relative;
