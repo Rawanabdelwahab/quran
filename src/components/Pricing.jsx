@@ -5,7 +5,7 @@ import f from "../assets/images/f.png";
 import s from "../assets/images/s.png";
 export default function Pricing() {
   return (
-    <app-pricing-plans>
+    
       <article className="pricing">
         <div className="container">
           <h2 className="main__title-1">خطط الاشتراك الشهرية</h2>
@@ -689,6 +689,6 @@ export default function Pricing() {
           </a>
         </div>
       </article>
-    </app-pricing-plans>
+   
   );
 }

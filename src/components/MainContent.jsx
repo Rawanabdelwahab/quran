@@ -8,17 +8,20 @@ import Subscribe from "./Subscribe";
 import Pricing from "./Pricing";
 import Teacher from "./Teacher";
 import Footer from "./Footer";
+import Slide from "./Slide"
 
 export default function MainContent() {
   return (
     <div>
       <Navbar />
+      {/* <Slide/> */}
       <Jumbotron />
       <Cards />
       <Subscribe />
       <Pricing />
       <Teacher/>
       <Footer/>
+     
     </div>
   );
 }

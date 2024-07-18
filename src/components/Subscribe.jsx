@@ -4,7 +4,7 @@ import pic from "../assets/images/pics.png";
 import "./subscribe.css";
 export default function Subscribe() {
   return (
-    <app-how-to-subscribe>
+   
       <article className="how__to__subscribe">
         <div className="container">
           <div className="holder">
@@ -63,6 +63,6 @@ export default function Subscribe() {
           </div>
         </div>
       </article>
-    </app-how-to-subscribe>
+   
   );
 }

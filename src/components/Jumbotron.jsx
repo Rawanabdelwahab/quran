@@ -1,20 +1,63 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import img from "../assets/images/Mask-Group-12.png";
+import a from "../assets/images/a.png";
 import "./jumbotron.css";
 import Grid from "@mui/material/Grid";
+import MuiImageSlider from "mui-image-slider";
+
 export default function Jumbotron() {
+  const images = [
+    a,
+    
+    "https://aldani.org/files/fa50dc522ade44c89e4400a52792bf74.jpg",
+    "https://aldani.org/files/9bf09db48b39194763dfad0c3d5f0d63.jpg",
+  ];
+
   return (
     <div>
       <header className="header">
         <section className="header__top">
-        <h3 className="top__content__description description-top d-sm-block"> أكبر منصة تحفيظ وتدريس علوم القرآن في مصر والوطن العربي للكبار والأطفال </h3>
+          <h3 className="top__content__description description-top d-sm-block">
+            {" "}
+            أكبر منصة تحفيظ وتدريس علوم القرآن في مصر والوطن العربي للكبار
+            والأطفال{" "}
+          </h3>
 
-          <img
+          <div className=" slide-out"
+            // style={{
+            //   width: "30%",
+            //   paddingBottom: "30%", // This makes the height equal to the width, creating a square
+            //   marginRight: "550px",
+            //   display: "flex",
+            //   flexDirection: "row",
+            //   justifyContent: "center",
+            //   border: "5px solid #fff",
+            //   borderRadius: "10px",
+            //   position: "relative", // This is necessary for the inner content to be positioned correctly
+            // }}
+          >
+            <div
+              style={{
+                position: "absolute", // This positions the inner content correctly within the parent
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <MuiImageSlider images={images} autoPlay={true} />
+            </div>
+          </div>
+
+          {/* <img
             alt="qooran home page landing section image"
             src={img}
             className="header__top__img"
-          />
+          /> */}
           <section className="top__content">
             <h3 className="top__content__description d-sm-none">
               <Grid item xs={8}>
@@ -26,12 +69,12 @@ export default function Jumbotron() {
             <section className="top__content__btns">
               <a href="/user/signup" className="button experimental-lecture">
                 {" "}
-                انضم كطالب{" "}
+                تسجيل الدخول{" "}
               </a>
 
               <a href="/user/login" className="button join-teacher">
                 {" "}
-                تسجيل الدخول
+                ولى الامر
               </a>
             </section>
           </section>
