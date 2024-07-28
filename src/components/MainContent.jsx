@@ -9,18 +9,22 @@ import Pricing from "./Pricing";
 import Teacher from "./Teacher";
 import Footer from "./Footer";
 import Slide from "./Slide"
+import SubscriptionForm from "./Upload";
+import TeacherForm from "./TeacherForm";
 
 export default function MainContent() {
   return (
     <div>
       <Navbar />
-      {/* <Slide/> */}
-      <Jumbotron />
+      
+      {/* <Jumbotron />
       <Cards />
       <Subscribe />
       <Pricing />
       <Teacher/>
-      <Footer/>
+      <Footer/> */}
+      {/* <SubscriptionForm/> */}
+      <TeacherForm/>
      
     </div>
   );
