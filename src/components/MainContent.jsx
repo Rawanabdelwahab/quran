@@ -11,20 +11,20 @@ import Footer from "./Footer";
 import Slide from "./Slide"
 import SubscriptionForm from "./Upload";
 import TeacherForm from "./TeacherForm";
-
+import Test from "./Test";
 export default function MainContent() {
   return (
     <div>
       <Navbar />
-      
-      {/* <Jumbotron />
+      <Jumbotron />
       <Cards />
       <Subscribe />
       <Pricing />
       <Teacher/>
-      <Footer/> */}
+      <Footer/>
+      {/* <Test/> */}
       {/* <SubscriptionForm/> */}
-      <TeacherForm/>
+      {/* <TeacherForm/> */}
      
     </div>
   );

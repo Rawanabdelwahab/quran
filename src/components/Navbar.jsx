@@ -19,6 +19,7 @@ import Grid from "@mui/material/Grid";
 import rtlPlugin from "stylis-plugin-rtl";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
+import { useNavigate ,Link} from "react-router-dom";
 import "./styles.css"; // Import your CSS file
 
 const pages = ["الدورات والخطط", "المعلمين", "الاسئلة الشائعة", "تواصل معنا"];
@@ -170,6 +171,7 @@ function Navbar() {
                     >
                       انضم الينا
                     </Button>
+                       
                   </Stack>
                   <Box
                     sx={{
