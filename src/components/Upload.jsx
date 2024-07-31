@@ -1,17 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import axios from 'axios';
-import { TextField, Button, Box, Typography } from '@mui/material';
+import React, { useState } from "react";
+import axios from "axios";
+import { TextField, Button, Box, Typography, Alert } from "@mui/material";
+
 const API_URL = import.meta.env.VITE_API_URL;
+
 const SubscriptionForm = () => {
   const [formData, setFormData] = useState({
-    price: '',
-    times: '',
-    duration: '',
-    person: '',
-    number: '',
+    price: "",
+    times: "",
+    duration: "",
+    person: "",
+    number: "",
     image: null,
   });
+
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,12 +34,14 @@ const SubscriptionForm = () => {
     try {
       const response = await axios.post(`${API_URL}/post`, form, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
-      console.log('Subscription created:', response.data);
+      setSuccessMessage("تم التسجيل بنجاح");
+      console.log("Subscription created:", response.data);
     } catch (error) {
-      console.error('Error uploading subscription:', error);
+      console.error("Error uploading subscription:", error);
+      setSuccessMessage("خطأ فى التسجيل");
     }
   };
 
@@ -44,20 +50,20 @@ const SubscriptionForm = () => {
       component="form"
       onSubmit={handleSubmit}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         gap: 2,
         maxWidth: 400,
-        margin: 'auto',
-        mt: 5
+        margin: "auto",
+        mt: 5,
       }}
     >
       <Typography variant="h4" gutterBottom>
-        Subscribe
+        الاشتراك
       </Typography>
       <TextField
-        label="Price"
+        label="السعر"
         name="price"
         value={formData.price}
         onChange={handleChange}
@@ -65,7 +71,7 @@ const SubscriptionForm = () => {
         fullWidth
       />
       <TextField
-        label="Times"
+        label="عدد المرات"
         name="times"
         value={formData.times}
         onChange={handleChange}
@@ -73,7 +79,7 @@ const SubscriptionForm = () => {
         fullWidth
       />
       <TextField
-        label="Duration"
+        label="المدة"
         name="duration"
         value={formData.duration}
         onChange={handleChange}
@@ -81,7 +87,7 @@ const SubscriptionForm = () => {
         fullWidth
       />
       <TextField
-        label="Person"
+        label="الشخص"
         name="person"
         value={formData.person}
         onChange={handleChange}
@@ -89,28 +95,25 @@ const SubscriptionForm = () => {
         fullWidth
       />
       <TextField
-        label="Number"
+        label="العدد"
         name="number"
         value={formData.number}
         onChange={handleChange}
         required
         fullWidth
       />
-      <Button
-        variant="contained"
-        component="label"
-      >
-        Upload Image
-        <input
-          type="file"
-          name="image"
-          hidden
-          onChange={handleFileChange}
-        />
+      <Button variant="contained" component="label">
+        تحميل صورة
+        <input type="file" name="image" hidden onChange={handleFileChange} />
       </Button>
       <Button type="submit" variant="contained" color="primary">
-        Submit
+        تسجيل
       </Button>
+      {successMessage && (
+        <Alert severity="success" sx={{ mt: 2 }}>
+          {successMessage}
+        </Alert>
+      )}
     </Box>
   );
 };

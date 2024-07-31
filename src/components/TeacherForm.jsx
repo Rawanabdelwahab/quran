@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import axios from "axios";
-import { TextField, Button, Box, Typography } from "@mui/material";
+import { TextField, Button, Box, Typography, Alert } from "@mui/material";
+
 const API_URL = import.meta.env.VITE_API_URL;
+
 const TeacherForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -11,6 +13,8 @@ const TeacherForm = () => {
     teach: "",
     image: null,
   });
+
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -32,9 +36,11 @@ const TeacherForm = () => {
           "Content-Type": "multipart/form-data",
         },
       });
+      setSuccessMessage("تم التسجيل بنجاح");
       console.log("Subscription created:", response.data);
     } catch (error) {
       console.error("Error uploading subscription:", error);
+      setSuccessMessage("خطأ فى التسجيل");
     }
   };
 
@@ -53,10 +59,10 @@ const TeacherForm = () => {
       }}
     >
       <Typography variant="h4" gutterBottom>
-        Add Teacher
+        اضافة معلمين
       </Typography>
       <TextField
-        label="name"
+        label="الاسم"
         name="name"
         value={formData.name}
         onChange={handleChange}
@@ -64,7 +70,7 @@ const TeacherForm = () => {
         fullWidth
       />
       <TextField
-        label="country"
+        label="الدولة"
         name="country"
         value={formData.country}
         onChange={handleChange}
@@ -72,7 +78,7 @@ const TeacherForm = () => {
         fullWidth
       />
       <TextField
-        label="languages"
+        label="اللغات"
         name="languages"
         value={formData.languages}
         onChange={handleChange}
@@ -80,21 +86,25 @@ const TeacherForm = () => {
         fullWidth
       />
       <TextField
-        label="teach"
+        label="يدرس"
         name="teach"
         value={formData.teach}
         onChange={handleChange}
         required
         fullWidth
       />
-
       <Button variant="contained" component="label">
-        Upload Image
+        تحميل صورة
         <input type="file" name="image" hidden onChange={handleFileChange} />
       </Button>
       <Button type="submit" variant="contained" color="primary">
-        Submit
+        تسجيل
       </Button>
+      {successMessage && (
+        <Alert severity="success" sx={{ mt: 2 }}>
+          {successMessage}
+        </Alert>
+      )}
     </Box>
   );
 };
