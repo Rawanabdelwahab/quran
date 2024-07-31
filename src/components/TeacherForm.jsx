@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
-import axios from 'axios';
-import { TextField, Button, Box, Typography } from '@mui/material';
-
+import React, { useState } from "react";
+import axios from "axios";
+import { TextField, Button, Box, Typography } from "@mui/material";
+const API_URL = import.meta.env.VITE_API_URL;
 const TeacherForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    country: '',
-    languages: '',
-    teach: '',
+    name: "",
+    country: "",
+    languages: "",
+    teach: "",
     image: null,
   });
 
@@ -27,14 +27,14 @@ const TeacherForm = () => {
       form.append(key, formData[key]);
     }
     try {
-      const response = await axios.post('http://localhost:3000/postTeacher', form, {
+      const response = await axios.post(`${API_URL}/postTeacher`, form, {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          "Content-Type": "multipart/form-data",
         },
       });
-      console.log('Subscription created:', response.data);
+      console.log("Subscription created:", response.data);
     } catch (error) {
-      console.error('Error uploading subscription:', error);
+      console.error("Error uploading subscription:", error);
     }
   };
 
@@ -43,13 +43,13 @@ const TeacherForm = () => {
       component="form"
       onSubmit={handleSubmit}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         gap: 2,
         maxWidth: 400,
-        margin: 'auto',
-        mt: 5
+        margin: "auto",
+        mt: 5,
       }}
     >
       <Typography variant="h4" gutterBottom>
@@ -87,18 +87,10 @@ const TeacherForm = () => {
         required
         fullWidth
       />
-      
-      <Button
-        variant="contained"
-        component="label"
-      >
+
+      <Button variant="contained" component="label">
         Upload Image
-        <input
-          type="file"
-          name="image"
-          hidden
-          onChange={handleFileChange}
-        />
+        <input type="file" name="image" hidden onChange={handleFileChange} />
       </Button>
       <Button type="submit" variant="contained" color="primary">
         Submit

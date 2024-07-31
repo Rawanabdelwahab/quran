@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { TextField, Button, Box, Typography } from '@mui/material';
-
+const API_URL = import.meta.env.VITE_API_URL;
 const SubscriptionForm = () => {
   const [formData, setFormData] = useState({
     price: '',
@@ -28,7 +28,7 @@ const SubscriptionForm = () => {
       form.append(key, formData[key]);
     }
     try {
-      const response = await axios.post('http://localhost:3000/post', form, {
+      const response = await axios.post(`${API_URL}/post`, form, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

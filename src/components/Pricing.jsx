@@ -6,7 +6,7 @@ import s from "../assets/images/s.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { TextField, Button, Box, Typography, Grid } from "@mui/material";
-
+const API_URL = import.meta.env.VITE_API_URL;
 export default function Pricing() {
   const [formData, setFormData] = useState({
     price: "",
@@ -21,7 +21,7 @@ export default function Pricing() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/subscriptions");
+        const response = await axios.get(`${API_URL}/subscriptions`);
         setSubscriptions(response.data);
       } catch (error) {
         console.error("Error fetching subscriptions:", error);
@@ -45,7 +45,7 @@ export default function Pricing() {
       form.append(key, formData[key]);
     }
     try {
-      const response = await axios.post("http://localhost:3000/post", form, {
+      const response = await axios.post(`${API_URL}/post`, form, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -70,7 +70,7 @@ export default function Pricing() {
                       width="210"
                       className="card__image ng-lazyloaded"
                       alt="subscriptions Image"
-                      src={`http://localhost:3000${subscriptions[0].imageUrl}`}
+                      src={`${API_URL}${subscriptions[0].imageUrl}`}
                     />
                   ) : (
                     <div className="placeholder">No Image Available</div>
@@ -284,7 +284,7 @@ export default function Pricing() {
                       width="210"
                       className="card__image ng-lazyloaded"
                       alt="subscriptions Image"
-                      src={`http://localhost:3000${subscriptions[1].imageUrl}`}
+                      src={`${API_URL}${subscriptions[1].imageUrl}`}
                     />
                   ) : (
                     <div className="placeholder">No Image Available</div>
@@ -496,7 +496,7 @@ export default function Pricing() {
                       width="210"
                       className="card__image ng-lazyloaded"
                       alt="subscriptions Image"
-                      src={`http://localhost:3000${subscriptions[2].imageUrl}`}
+                      src={`${API_URL}${subscriptions[2].imageUrl}`}
                     />
                   ) : (
                     <div className="placeholder">No Image Available</div>
@@ -708,7 +708,7 @@ export default function Pricing() {
                       width="210"
                       className="card__image ng-lazyloaded"
                       alt="subscriptions Image"
-                      src={`http://localhost:3000${subscriptions[3].imageUrl}`}
+                      src={`${API_URL}${subscriptions[3].imageUrl}`}
                     />
                   ) : (
                     <div className="placeholder">No Image Available</div>

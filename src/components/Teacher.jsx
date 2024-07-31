@@ -1,11 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
-import a from "../assets/images/a.png";
-import b from "../assets/images/b.png";
-import c from "../assets/images/c.png";
 import "./teacher.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
+const API_URL = import.meta.env.VITE_API_URL;
 export default function Teacher() {
   const [formData, setFormData] = useState({
     name: "",
@@ -19,7 +17,7 @@ export default function Teacher() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/Teachers");
+        const response = await axios.get(`${API_URL}/Teachers`);
         setTeachers(response.data);
       } catch (error) {
         console.error("Error fetching Teachers:", error);
@@ -43,15 +41,11 @@ export default function Teacher() {
       form.append(key, formData[key]);
     }
     try {
-      const response = await axios.post(
-        "http://localhost:3000/postTeacher",
-        form,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${API_URL}/postTeacher`, form, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log("Teachers created:", response.data);
     } catch (error) {
       console.error("Error uploading teachers:", error);
@@ -71,7 +65,7 @@ export default function Teacher() {
                     className="card__img  ng-lazyloaded"
                     alt="إسلام أبوزهرة"
                     title="إسلام أبوزهرة"
-                    src={`http://localhost:3000${teachers[0].imageUrl}`}
+                    src={`${API_URL}${teachers[0].imageUrl}`}
                   />
                 ) : (
                   <div className="placeholder">No Image Available</div>
@@ -133,7 +127,7 @@ export default function Teacher() {
                     className="card__img  ng-lazyloaded"
                     alt="Test Teacher"
                     title="Test Teacher"
-                    src={`http://localhost:3000${teachers[1].imageUrl}`}
+                    src={`${API_URL}${teachers[1].imageUrl}`}
                   />
                 ) : (
                   <div className="placeholder">No Image Available</div>
@@ -201,7 +195,7 @@ export default function Teacher() {
                     className="card__img  ng-lazyloaded"
                     alt="أحمد علي محمد السراج"
                     title="أحمد علي محمد السراج"
-                    src={`http://localhost:3000${teachers[2].imageUrl}`}
+                    src={`${API_URL}${teachers[2].imageUrl}`}
                   />
                 ) : (
                   <div className="placeholder">No Image Available</div>
@@ -266,7 +260,7 @@ export default function Teacher() {
                     className="card__img  ng-lazyloaded"
                     alt="أحمد علي محمد السراج"
                     title="أحمد علي محمد السراج"
-                    src={`http://localhost:3000${teachers[3].imageUrl}`}
+                    src={`${API_URL}${teachers[3].imageUrl}`}
                   />
                 ) : (
                   <div className="placeholder">No Image Available</div>
