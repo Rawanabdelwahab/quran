@@ -6,7 +6,7 @@ import axios from "axios";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-export default function Teacher() {
+export default function TeacherPagination() {
   const [formData, setFormData] = useState({
     name: "",
     country: "",
@@ -15,19 +15,24 @@ export default function Teacher() {
     image: null,
   });
   const [teachers, setTeachers] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${API_URL}/Teachers`);
-        setTeachers(response.data);
+        const response = await axios.get(`${API_URL}/paginatedTeachers`, {
+          params: { page: currentPage, limit: 10 },
+        });
+        setTeachers(response.data.teachers);
+        setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Error fetching Teachers:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [currentPage]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -55,12 +60,18 @@ export default function Teacher() {
     }
   };
 
+  const handlePageChange = (page) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
   return (
     <article className="our__teachers">
       <div className="container-1">
-        <h2 className="main__title-2">بعض معلمينا</h2>
+        <h2 className="main__title-2"> معلمينا</h2>
         <div className="row-2 gy-3 ng-star-inserted">
-          {teachers.slice(0, 4).map((teacher, index) => (
+          {teachers.map((teacher, index) => (
             <div
               key={index}
               className="col-12 col-lg-3 col-md-6 ng-star-inserted"
@@ -105,11 +116,25 @@ export default function Teacher() {
             </div>
           ))}
         </div>
+        <div className="pagination">
+          <button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+          >
+            السابق
+          </button>
+          <span>
+            صفحة {currentPage} من {totalPages}
+          </span>
+          <button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+          >
+            التالى
+          </button>
+        </div>
       </div>
       <section className="actions__button">
-        <Link className="button-2 raised__button-2" to="/TeacherPagination">
-          مشاهدة جميع المعلمين
-        </Link>
         <Link className="button-2 raised__button-2" to="/TeacherForm">
           اضافة معلمين
         </Link>

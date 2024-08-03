@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Upload from './components/Upload.jsx';
+import SubscriptionForm from './components/SubscriptionForm.jsx';
+import TeacherPagination from './components/TeacherPagination.jsx';
+// import PricingPagination from './components/PricingPagination.jsx';
 import TeacherForm from './components/TeacherForm.jsx';
 import MainContent from './components/MainContent.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -12,13 +14,22 @@ const router = createBrowserRouter([
     element: <MainContent/>,
   },
   {
-    path: '/Upload',
-    element: <Upload />,
+    path: '/SubscriptionForm',
+    element: <SubscriptionForm />,
   },
   {
     path: '/TeacherForm',
     element: <TeacherForm />,
   },
+  {
+    path: '/TeacherPagination',
+    element: <TeacherPagination />,
+  },
+  // {
+  //   path: '/PricingPagination',
+  //   element: <PricingPagination />,
+  // },
+  
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

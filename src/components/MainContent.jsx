@@ -9,9 +9,10 @@ import Pricing from "./Pricing";
 import Teacher from "./Teacher";
 import Footer from "./Footer";
 import Slide from "./Slide"
-import SubscriptionForm from "./Upload";
+import SubscriptionForm from "./SubscriptionForm";
 import TeacherForm from "./TeacherForm";
 import Test from "./Test";
+import PricingPagination from "./PricingPagination";
 export default function MainContent() {
   return (
     <div>
@@ -25,6 +26,7 @@ export default function MainContent() {
       {/* <Test/> */}
       {/* <SubscriptionForm/> */}
       {/* <TeacherForm/> */}
+      {/* <PricingPagination/> */}
      
     </div>
   );

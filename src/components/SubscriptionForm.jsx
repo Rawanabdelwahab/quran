@@ -18,7 +18,15 @@ const SubscriptionForm = () => {
   const [successMessage, setSuccessMessage] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    // Check if the field is one of the numeric fields and ensure the value is numeric
+    if (["price", "times", "duration", "number"].includes(name)) {
+      if (!isNaN(value)) {
+        setFormData({ ...formData, [name]: value });
+      }
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   const handleFileChange = (e) => {
@@ -110,7 +118,12 @@ const SubscriptionForm = () => {
         تسجيل
       </Button>
       {successMessage && (
-        <Alert severity="success" sx={{ mt: 2 }}>
+        <Alert
+          severity={
+            successMessage.includes("successfully") ? "success" : "error"
+          }
+          sx={{ mt: 2 }}
+        >
           {successMessage}
         </Alert>
       )}
