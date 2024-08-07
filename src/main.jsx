@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import SubscriptionForm from './components/SubscriptionForm.jsx';
 import TeacherPagination from './components/TeacherPagination.jsx';
-// import PricingPagination from './components/PricingPagination.jsx';
+ import PricingPagination from './components/PricingPagination.jsx';
 import TeacherForm from './components/TeacherForm.jsx';
 import MainContent from './components/MainContent.jsx';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -25,10 +25,10 @@ const router = createBrowserRouter([
     path: '/TeacherPagination',
     element: <TeacherPagination />,
   },
-  // {
-  //   path: '/PricingPagination',
-  //   element: <PricingPagination />,
-  // },
+  {
+    path: '/PricingPagination',
+    element: <PricingPagination />,
+  },
   
 ]);
 

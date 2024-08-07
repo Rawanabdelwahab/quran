@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { TextField, Button, Box, Typography, Alert } from "@mui/material";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -45,67 +47,101 @@ const TeacherForm = () => {
   };
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 2,
-        maxWidth: 400,
-        margin: "auto",
-        mt: 5,
-      }}
-    >
-      <Typography variant="h4" gutterBottom>
-        اضافة معلمين
-      </Typography>
-      <TextField
-        label="الاسم"
-        name="name"
-        value={formData.name}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
-      <TextField
-        label="الدولة"
-        name="country"
-        value={formData.country}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
-      <TextField
-        label="اللغات"
-        name="languages"
-        value={formData.languages}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
-      <TextField
-        label="يدرس"
-        name="teach"
-        value={formData.teach}
-        onChange={handleChange}
-        required
-        fullWidth
-      />
-      <Button variant="contained" component="label">
-        تحميل صورة
-        <input type="file" name="image" hidden onChange={handleFileChange} />
-      </Button>
-      <Button type="submit" variant="contained" color="primary">
-        تسجيل
-      </Button>
-      {successMessage && (
-        <Alert severity="success" sx={{ mt: 2 }}>
-          {successMessage}
-        </Alert>
-      )}
-    </Box>
+    <div>
+      <Navbar />
+
+      <Box
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 2,
+          maxWidth: 400,
+          margin: "auto",
+          mt: 5,
+        }}
+      >
+        <Typography variant="h4" gutterBottom>
+          اضافة معلمين
+        </Typography>
+        <TextField
+          label="الاسم"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          fullWidth
+        />
+        <TextField
+          label="الدولة"
+          name="country"
+          value={formData.country}
+          onChange={handleChange}
+          required
+          fullWidth
+        />
+        <TextField
+          label="اللغات"
+          name="languages"
+          value={formData.languages}
+          onChange={handleChange}
+          required
+          fullWidth
+        />
+        <TextField
+          label="يدرس"
+          name="teach"
+          value={formData.teach}
+          onChange={handleChange}
+          required
+          fullWidth
+        />
+        <Button
+          variant="contained"
+          component="label"
+          sx={{
+            backgroundColor: "#686e6b",
+            color: "white",
+            border: "2px solid white",
+            "&:hover": {
+              backgroundColor: "white",
+              border: "2px solid white",
+              color: "#686e6b",
+            },
+            marginRight: 1,
+          }}
+        >
+          تحميل صورة
+          <input type="file" name="image" hidden onChange={handleFileChange} />
+        </Button>
+        <Button
+          type="submit"
+          variant="contained"
+          sx={{
+            backgroundColor: "#686e6b",
+            color: "white",
+            border: "2px solid white",
+            "&:hover": {
+              backgroundColor: "white",
+              border: "2px solid white",
+              color: "#686e6b",
+            },
+            marginRight: 1,
+            marginBottom:2
+          }}
+        >
+          تسجيل
+        </Button>
+        {successMessage && (
+          <Alert severity="success" sx={{ mt: 2 }}>
+            {successMessage}
+          </Alert>
+        )}
+      </Box>
+      <Footer/>
+    </div>
   );
 };
 
