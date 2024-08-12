@@ -80,7 +80,7 @@ export default function Pricing() {
                 <div className="card__body">
                   <bdi className="price">
                     {subscription.price
-                      ? subscription.price
+                      ? `${subscription.price} LE`
                       : "No price available"}
                   </bdi>
 
@@ -250,10 +250,10 @@ export default function Pricing() {
                       </bdi>
                     </li>
                   </ul>
-                  <a className="subscribe" href="/payment?plan_id=54">
+                  <Link className="subscribe" to={`/PaySubscribe/${subscription._id}`}>
                     {" "}
                     الاشتراك في هذه الدورة{" "}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

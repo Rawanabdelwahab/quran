@@ -1,42 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import SubscriptionForm from './components/SubscriptionForm.jsx';
-import TeacherPagination from './components/TeacherPagination.jsx';
- import PricingPagination from './components/PricingPagination.jsx';
-import TeacherForm from './components/TeacherForm.jsx';
-import MainContent from './components/MainContent.jsx';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import SubscriptionForm from "./components/SubscriptionForm.jsx";
+import TeacherPagination from "./components/TeacherPagination.jsx";
+import PricingPagination from "./components/PricingPagination.jsx";
+import TeacherForm from "./components/TeacherForm.jsx";
+import MainContent from "./components/MainContent.jsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import PaySubscribe from "./components/PaySubscribe.jsx";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <MainContent/>,
+    path: "/",
+    element: <MainContent />,
   },
   {
-    path: '/SubscriptionForm',
+    path: "/SubscriptionForm",
     element: <SubscriptionForm />,
   },
   {
-    path: '/TeacherForm',
+    path: "/TeacherForm",
     element: <TeacherForm />,
   },
   {
-    path: '/TeacherPagination',
+    path: "/TeacherPagination",
     element: <TeacherPagination />,
   },
   {
-    path: '/PricingPagination',
+    path: "/PricingPagination",
     element: <PricingPagination />,
   },
-  
+  {
+    path: "/PaySubscribe",
+    element: <PaySubscribe />,
+  },
+  {
+    path: "/PaySubscribe/:id",
+    element: <PaySubscribe />,
+  },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
 );
-
-

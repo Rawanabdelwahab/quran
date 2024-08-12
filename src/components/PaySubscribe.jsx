@@ -1,106 +1,103 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import "./pricing.css";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { TextField, Button, Box, Typography, Grid } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import "./paySubscribe.css";
+import a from "../assets/images/a.png";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { TextField, Button, Container, Typography, Box } from "@mui/material";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 const API_URL = import.meta.env.VITE_API_URL;
-
-export default function PricingPagination() {
-  const [formData, setFormData] = useState({
-    price: "",
-    times: "",
-    duration: "",
-    person: "",
-    number: "",
-    image: null,
-  });
-  const [subscriptions, setSubscriptions] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-
+export default function PaySubscribe() {
+  const { id } = useParams(); // Extract the ID from the URL
+  const [subscription, setSubscription] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchSubscription = async () => {
       try {
-        const response = await axios.get(`${API_URL}/paginatedSubscribes`, {
-          params: { page: currentPage, limit: 10 },
-        });
-        console.log("API response:", response.data);
-        setSubscriptions(response.data.subscribe || []);
-        setTotalPages(response.data.totalPages || 1);
+        const response = await axios.get(`${API_URL}/subscriptions/${id}`);
+        setSubscription(response.data);
       } catch (error) {
-        console.error("Error fetching subscriptions:", error);
+        console.error("Error fetching subscription:", error);
+        setError("Failed to fetch subscription data.");
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchData();
-  }, [currentPage]);
+    fetchSubscription();
+  }, [id]);
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  if (error) {
+    return <p>{error}</p>;
+  }
 
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, image: e.target.files[0] });
-  };
+  const increaseNumber = async () => {
+    if (subscription) {
+      try {
+        // Send a PUT request to update the subscription number in the backend
+        const updatedSubscription = {
+          ...subscription,
+          number: subscription.number + 1,
+        };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const form = new FormData();
-    for (const key in formData) {
-      form.append(key, formData[key]);
-    }
-    try {
-      const response = await axios.post(`${API_URL}/post`, form, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("Subscription created:", response.data);
-    } catch (error) {
-      console.error("Error uploading subscription:", error);
-    }
-  };
+        const response = await axios.put(
+          `${API_URL}/subscriptions/${id}`,
+          updatedSubscription
+        );
 
-  const handlePageChange = (page) => {
-    if (page >= 1 && page <= totalPages) {
-      setCurrentPage(page);
+        // Update the frontend state with the new number
+        setSubscription(response.data);
+      } catch (error) {
+        console.error("Error updating subscription:", error);
+      }
     }
   };
 
   return (
     <div>
       <Navbar />
-      <article className="pricing">
-        <div className="container">
-          <h2 className="main__title-1">خطط الاشتراك الشهرية</h2>
-          <div className="row-1 gy-3 ng-star-inserted">
-            {subscriptions.length > 0 ? (
-              subscriptions.map((subscription, index) => (
-                <div key={index} className="col-12 col-lg-3  ng-star-inserted">
-                  <div className="card-1 ng-star-inserted">
-                    <div className="card__header">
+      <section className="payment__container container ng-star-inserted">
+        <div className="holder row5">
+          <div className="col-15">
+            <div className="package__container card__main5">
+              {subscription ? (
+                <div>
+                  <h1 className="semi__title5">
+                    {subscription.price
+                      ? `  ${subscription.price} LE`
+                      : "No price available"}
+                  </h1>
+
+                  <section className="row5">
+                    <div className="col-15 col-md-3">
                       {subscription.imageUrl ? (
                         <img
-                          height="210"
-                          width="210"
-                          className="card__image ng-lazyloaded"
-                          alt="subscriptions Image"
+                          className="package__img  ng-lazyloaded"
+                          alt={subscription.price}
+                          title={
+                            `${subscription.price} LE` +
+                            " " +
+                            `${subscription.times} حصص` +
+                            " " +
+                            `${subscription.duration} ساعة` +
+                            " " +
+                            `${subscription.person}` +
+                            " " +
+                            `${subscription.number} طالب`
+                          }
                           src={`${API_URL}${subscription.imageUrl}`}
                         />
                       ) : (
                         <div className="placeholder">No Image Available</div>
                       )}
                     </div>
-                    <div className="card__body">
-                      <bdi className="price">
-                        {subscription.price
-                          ? subscription.price
-                          : "No price available"}
-                      </bdi>
+                    <div className="col-15 col-md-9">
                       <ul className="card__items__container">
                         <li className="card__item">
                           <svg
@@ -108,7 +105,6 @@ export default function PricingPagination() {
                             viewBox="0 0 16 16"
                             width="16"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="ng-star-inserted"
                           >
                             <g
                               data-name="Layer 2"
@@ -136,11 +132,11 @@ export default function PricingPagination() {
                               </g>
                             </g>
                           </svg>
-                          <bdi className="li-title">
+                          <p className="li-title">
                             {subscription.times
                               ? `${subscription.times} حصص`
                               : "No times available"}
-                          </bdi>
+                          </p>
                         </li>
                         <li className="card__item">
                           <svg
@@ -148,7 +144,6 @@ export default function PricingPagination() {
                             viewBox="0 0 16 16"
                             width="16"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="ng-star-inserted"
                           >
                             <g
                               data-name="Layer 2"
@@ -176,11 +171,11 @@ export default function PricingPagination() {
                               </g>
                             </g>
                           </svg>
-                          <bdi className="li-title">
+                          <p className="li-title">
                             {subscription.duration
                               ? `${subscription.duration} ساعة`
                               : "No duration available"}
-                          </bdi>
+                          </p>
                         </li>
                         <li className="card__item">
                           <svg
@@ -188,7 +183,6 @@ export default function PricingPagination() {
                             viewBox="0 0 16 16"
                             width="16"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="ng-star-inserted"
                           >
                             <g
                               data-name="Layer 2"
@@ -216,11 +210,11 @@ export default function PricingPagination() {
                               </g>
                             </g>
                           </svg>
-                          <bdi className="li-title">
+                          <p className="li-title">
                             {subscription.person
-                              ? subscription.person
+                              ? `${subscription.person}`
                               : "No person available"}
-                          </bdi>
+                          </p>
                         </li>
                         <li className="card__item">
                           <svg
@@ -228,7 +222,6 @@ export default function PricingPagination() {
                             viewBox="0 0 16 16"
                             width="16"
                             xmlns="http://www.w3.org/2000/svg"
-                            className="ng-star-inserted"
                           >
                             <g
                               data-name="Layer 2"
@@ -256,52 +249,107 @@ export default function PricingPagination() {
                               </g>
                             </g>
                           </svg>
-                          <bdi className="li-title">
+                          <p dir="rtl" className="li-title">
                             {subscription.number
                               ? `${subscription.number} طالب`
-                              : "No number available"}
-                          </bdi>
+                              : "No number available"}{" "}
+                          </p>
                         </li>
                       </ul>
-                      <Link
-                        className="subscribe"
-                        to={`/PaySubscribe/${subscription._id}`}
-                      >
-                        {" "}
-                        الاشتراك في هذه الدورة{" "}
-                      </Link>
                     </div>
-                  </div>
+                  </section>
                 </div>
-              ))
-            ) : (
-              <p>No subscriptions available</p>
-            )}
+              ) : (
+                <p>Loading...</p>
+              )}
+            </div>
           </div>
-          <div className="pagination">
-            <button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-            >
-              السابق
-            </button>
-            <span>
-              صفحة {currentPage} من {totalPages}
-            </span>
-            <button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-            >
-              التالى
-            </button>
+          <div className="col-15">
+            <div className="coupons__container card__main5">
+              <h2 className="semi__title5">تنويه</h2>
+              <section className="bottom">
+                <p>
+                  {" "}
+                  طالبنا العزيز: عند الاشتراك معنا تكون مدة باقتك مفعلة ومتاحة
+                  لمدة 30 يوماً فقط، يمكنك خلالها حضور وإنهاء كافة الحصص المتاحة
+                  في باقتك، وفي حالة الاعتذار والتأجيل الطارئ لبعض الحصص تتيح
+                  الإدارة مد تفعيل الباقة لمدة 15 يوماً إضافياً، بعدها تصبح
+                  الباقة غير متاحة.{" "}
+                </p>
+              </section>
+            </div>
           </div>
 
-          <Link className="button-1 raised__button" to="/SubscriptionForm">
-            {" "}
-            اضافة خطط{" "}
-          </Link>
+          <div className="col-15">
+            <div className="payment__methods__container card__main5">
+              <h2 className="semi__title5">اختر طريقة الدفع</h2>
+              <div
+                dir="ltr"
+                className="row5 justify-content-between mt-4 gap-3"
+              >
+                {/* ///////////////////// */}
+                <Container maxWidth="sm">
+                  <Box mt={5}>
+                    <form>
+                      <TextField
+                        label="الاسم"
+                        fullWidth
+                        margin="normal"
+                        required
+                      />
+                      <TextField
+                        label="البريد الالكترونى"
+                        type="email"
+                        fullWidth
+                        margin="normal"
+                        required
+                      />
+                      <Box mt={3}></Box>
+                      <button
+                        type="button"
+                        className="raised__button_white button5"
+                        onClick={increaseNumber}
+                      >
+                        أدفع
+                      </button>
+                    </form>
+                  </Box>
+                </Container>
+              </div>
+            </div>
+          </div>
+          <div className="col-15">
+            <div className="overall__container card__main5">
+              <h2 className="semi__title5">الإجمالي</h2>
+              <div className="row5">
+                <div className="col-15">
+                  <div dir="ltr" className="price__overall">
+                    <p>
+                      <span>الإجمالي النهائي : </span>
+                      <span className="price__value">
+                        {subscription.price
+                          ? `  ${subscription.price} جنية مصري `
+                          : "No price available"}
+                      </span>
+                    </p>
+
+                    <p>
+                      <span>الإجمالي : </span>
+                      <span className="price__value">
+                        {" "}
+                        {subscription.price
+                          ? `  ${subscription.price} جنية مصري `
+                          : "No price available"}
+                      </span>
+                    </p>
+                  </div>
+                </div>
+                <div className="col-15"></div>
+              </div>
+            </div>
+          </div>
         </div>
-      </article>
+      </section>
       <Footer />
     </div>
   );

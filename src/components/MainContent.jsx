@@ -13,6 +13,8 @@ import SubscriptionForm from "./SubscriptionForm";
 import TeacherForm from "./TeacherForm";
 import Test from "./Test";
 import PricingPagination from "./PricingPagination";
+import Login from "./Login";
+import PaySubscribe from "./PaySubscribe";
 export default function MainContent() {
   return (
     <div>
@@ -23,6 +25,8 @@ export default function MainContent() {
       <Pricing />
       <Teacher/>
       <Footer/>
+      {/* <PaySubscribe/> */}
+      {/* <Login/> */}
       {/* <Test/> */}
       {/* <SubscriptionForm/> */}
       {/* <TeacherForm/> */}

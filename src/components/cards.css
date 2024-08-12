@@ -22,12 +22,12 @@
     font-size: var(--font-size-32, 2rem);
     margin-bottom: 1.2em;
 }
-.main__title, .semi__title {
+.main__title7, .semi__title {
     color: #464847;
     text-align: center;
 }
 
-.main__title {
+.main__title7 {
     color: #3c2ca7;
 }
 

@@ -1,0 +1,158 @@
+.row5 {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1* var(--bs-gutter-y));
+    margin-left: calc(-.5* var(--bs-gutter-x));
+    margin-right: calc(-.5* var(--bs-gutter-x));
+}
+
+/* .row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-left: calc(var(--bs-gutter-x)* .5);
+    padding-right: calc(var(--bs-gutter-x)* .5);
+    margin-top: var(--bs-gutter-y);
+} */
+
+.col-15 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+.card__main5 {
+    margin: 1rem auto;
+    border-radius: 12px;
+    padding: 2em;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+.main__title5 {
+    font-size: var(--font-size-32, 2rem);
+    margin-bottom: 1.2em;
+}
+
+.main__title5,
+.semi__title5 {
+    color: #0a4426;
+    text-align: center;
+}
+
+.main__title5,
+.semi__title5 {
+    color: #0a4426;
+    text-align: center;
+}
+
+.semi__title5 {
+    font-size: var(--font-size-24, 1.5rem);
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+}
+
+img {
+    max-width: 100%;
+}
+
+img,
+svg {
+    vertical-align: middle;
+}
+
+.package__img {
+    width: 175px;
+    height: 175px;
+    border-radius: 12px;
+}
+
+@media (min-width: 768px) {
+    .col-md-9 {
+        flex: 0 0 auto;
+        width: 75%;
+    }
+}
+
+.card__items__container {
+    list-style: none;
+    margin: 1em 0 0;
+    padding: 0;
+}
+
+.card__items__container .card__item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: right;
+    flex-flow: row;
+    flex-wrap: nowrap;
+    direction: ltr;
+    margin: 0 0 1em;
+}
+
+
+
+.overall__container .price__overall {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
+
+.overall__container .price__overall .price__value {
+    font-size: var(--font-size-18, 1.125rem);
+    color: #cf8b40;
+    font-weight: 700;
+}
+
+button5,
+input,
+optgroup,
+select,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+button5,
+select {
+    text-transform: none;
+}
+
+
+
+.button5 {
+    position: relative;
+    border-radius: 6px;
+    padding: .4rem .6rem;
+    background: #fff;
+    border: 2px solid #fff;
+    font-size: var(--font-size-14, .875rem);
+}
+
+.button5 {
+    color: #0c8849;
+    border-color: #0c8849;
+    margin-top: .5em;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: .2s ease-in-out;
+    cursor: pointer;
+}
+
+.raised__button_white {
+    color: #fff;
+    background-color: #0c8849;
+}
